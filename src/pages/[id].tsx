@@ -1,24 +1,24 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Header, Loading } from "../components";
-import { apiArea } from "../api/data";
-import { IArea } from "../interfaces/areaConhecimento.interface";
-import areaConhecimento from "../api/data/areaConhecimento";
+import { apiTentativa } from "../api/data";
+import { ITentativa } from "../interfaces/tentativa.interface";
 import { Table } from "../styles/pages";
+import { toast } from "react-toastify";
 
 export default function Id() {
   const [isLoading, setIsLoading] = useState(true);
-  const [areaConhecimento, setArea] = useState<IArea[]>([]);
+  const [tentativa, setTentativa] = useState<ITentativa[]>([]);
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiArea.show(router.query.id as string);
+        const response = await apiTentativa.show(router.query.id as string);
         if (response.data.length === 0) {
-          toast.error("Não existe aluno neste curso!");
+          toast.error("O usuário não possui tentativas!");
         }
-        setArea(response.data);
+        setTentativa(response.data);
       } catch (error) {
         toast.error("Ocorreu um erro na chamada do servidor!");
       } finally {
@@ -44,10 +44,12 @@ export default function Id() {
                 </tr>
               </thead>
               <tbody>
-                {areaConhecimento &&
-                  areaConhecimento.map((item) => (
+                {tentativa&&
+                  tentativa.map((item) => (
                     <tr key={item.id}>
-                      <td>{item.nome}</td>
+                      <td>{item.tentativa}</td>
+                      <td>{item.user_id}</td>
+                      <td>{item.respostas_id}</td>
                     </tr>
                   ))}
               </tbody>
