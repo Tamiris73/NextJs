@@ -8,8 +8,8 @@ export default createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
   }
   :root {
-    --main: #6c757d;
-    --main-hover: #5a6268;
+    --main: #1717b4;
+    --main-hover: #eeeeee;    
     --white: #ffffff;
     --black: #000000;
     --grey: #f0f0f0;

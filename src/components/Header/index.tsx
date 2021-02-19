@@ -26,8 +26,6 @@ const Header= () => {
           user.map((item) => (
             <Link key={item.id} href={`/${item.id}`}>
               {item.username}
-              {item.email}
-              {item.password}
             </Link>
           ))}
       </div>
