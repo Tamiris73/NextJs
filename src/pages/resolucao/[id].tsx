@@ -14,7 +14,7 @@ export default function id() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiResolucao.show(router.query.id as string);
+        const response = await apiResolucao.index();
         if (response.data.length === 0) {
           toast.error("Não há resolução!");
         }
@@ -25,10 +25,8 @@ export default function id() {
         setIsLoading(false);
       }
     };
-    if (router.query.id) {
-      fetchData();
-    }
-  }, [router.query.id]);
+    fetchData();
+  }, []);
   return (
     <>
       {isLoading ? (
@@ -48,8 +46,8 @@ export default function id() {
                 {resolucao&&
                   resolucao.map((item) => (
                     <tr key={item.id}>
-                      <td>{item.resolucao}</td>
-                      <td>{item.gabarito}</td>
+                      <td><link  key={item.resolucao} href={`/${item.resolucao}`}/></td>
+                      <td><link  key={item.gabarito} href={`/${item.gabarito}`}/></td>
                     </tr>
                   ))}
               </tbody>

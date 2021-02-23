@@ -14,7 +14,7 @@ export default function id() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiResposta.show(router.query.id as string);
+        const response = await apiResposta.index();
         if (response.data.length === 0) {
           toast.error("O usuário não respondeu nessa tentativa!");
         }
@@ -25,10 +25,8 @@ export default function id() {
         setIsLoading(false);
       }
     };
-    if (router.query.id) {
-      fetchData();
-    }
-  }, [router.query.id]);
+    fetchData();
+  }, []);
   return (
     <>
       {isLoading ? (
@@ -47,7 +45,7 @@ export default function id() {
                 {resposta&&
                   resposta.map((item) => (
                     <tr key={item.id}>
-                      <td>{item.resposta}</td>
+                      <td><link  key={item.resposta} href={`/${item.resposta}`}/></td>
                     </tr>
                   ))}
               </tbody>
