@@ -2,8 +2,8 @@ import api from "../../index";
 import { ITentativa } from "../../../interfaces/tentativa.interface"
 
 class tentativaData {
-  index() {
-    return api.get<ITentativa[]>('tentativa');
+  index(userId: string) {
+    return api.get<ITentativa[]>(`tentativa/${userId}/user`);
   }
 }
 

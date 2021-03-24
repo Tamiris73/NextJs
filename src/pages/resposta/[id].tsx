@@ -14,7 +14,7 @@ export default function id() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiQuestao.index();
+        const response = await apiQuestao.index(router.query.id as string);
         if (response.data.length === 0) {
           toast.error("Não há questão!");
         }

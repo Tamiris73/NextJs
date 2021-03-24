@@ -2,8 +2,8 @@ import api from "../../index";
 import { IResposta } from "../../../interfaces/resposta.interface"
 
 class respostaData {
-  index() {
-    return api.get<IResposta[]>('resposta');
+  index(questaoId: string) {
+    return api.get<IResposta[]>(`resposta/${questaoId}/questoes`);
   }
 }
 

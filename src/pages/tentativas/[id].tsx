@@ -14,7 +14,7 @@ export default function id() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiResposta.index();
+        const response = await apiResposta.index(router.query.id as string);
         if (response.data.length === 0) {
           toast.error("O usuário não respondeu nessa tentativa!");
         }
