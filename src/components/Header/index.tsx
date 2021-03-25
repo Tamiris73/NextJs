@@ -32,7 +32,7 @@ const Header = () => {
         <div>
           <BsPersonSquare
             onClick={() =>
-              (window.location.href = "https://react-tawny-psi.vercel.app")
+              (window.location.href = "https://react-tawny-psi.vercel.app/apicefet.herokuapp.com")
             }
           />
         </div>
